@@ -1,0 +1,22 @@
+.caption .social-links ul  {
+    font-size: 30px;
+    margin: 0 3px;
+    cursor: pointer;
+    color: #333;
+    transition: all .4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    color: #244338;
+  }
+  
+  .caption .social-links ul  a{
+    color: #244338;
+  }
+
+  .caption .social-links ul a:hover {
+    transition: all .4s ease;
+    color: #244338;
+    transform: translateY(-7px);
+  }
