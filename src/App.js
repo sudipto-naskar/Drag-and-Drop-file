@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';          // Import axios for making HTTP requests
 
 import DropFileInput from './components/drop-file-input/DropFileInput';
 
@@ -12,7 +12,7 @@ import Plant from './images/plant.png';
 const App = () => {
 
     const [uploadedFiles, setUploadedFiles] = useState([]);
-    const [output, setOutput] = useState(''); // State to store output from API
+    const [output, setOutput] = useState();      // State to store output from API
 
     const onFileChange = (files) => {
         console.log(files);
@@ -39,61 +39,48 @@ const App = () => {
     }, []); // Empty dependency array ensures this effect runs only once after initial render
 
 
-    // const uploadImages = () => {
-    //     console.log("Uploading files:", uploadedFiles[0]);
-
-    //     // Logic to upload files to the server can be implemented here
-    // }
-
-    
-    // const uploadImages = async () => {
-    //     const formData = new FormData();
-    //     formData.append('image', uploadedFiles[0]);
-
-    //     console.log(formData);
-
-    //     try {
-    //         const response = await axios.get(`http://127.0.0.1:8000/`, formData, {
-    //             headers: {
-    //               "access-control-allow-origin" : "*",
-    //               "Content-type": "application/json; charset=UTF-8"
-    //             }
-    //         });
-    //         console.log("API Response:", response.data);
-
-    //         // Update state with API response
-    //         setOutput(response.data.json());
-    //     } catch (error) {
-    //         console.error('Error uploading file:', error);
-    //     }
-    // }
-
-
     const uploadImages = async () => {
         if (uploadedFiles.length === 0) {
             console.error('No files uploaded.');
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('image', uploadedFiles[0]);
-    
+
         try {
             const response = await axios.post('http://127.0.0.1:8000/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-    
+
             console.log('API Response:', response.data);
-    
-            // Update state with API response
-            setOutput(response.data.json());
+
+            const vari = response.data
+
+            // Map each item in vari['data'] to HTML elements
+            const outputData = vari['data'].map(item => (
+                <div key={item.medicine_name}>
+                    <div>Medicine Name: {item['medicine_name']}</div>
+                    <div>Medicine Genre: {item['medicine_genre']}</div>
+                    <div>Medicine Text: {item['medicine_text']}</div>
+                    <div>Medicine Image URL: <a href={item['medicine_image_url']}>Link</a></div>
+                    {item['medicine_buy_link'] && (
+                        <div>Medicine Buy Link: <a href={item['medicine_buy_link']} target="_blank" rel="noopener noreferrer"> <button className='buynow'>Buy Now </button></a></div>
+                    )}
+                </div>
+            ));
+
+            // Set the concatenated data as the output
+            setOutput(outputData);
+
+            // console.log(vari['data'][0]);
         } catch (error) {
             console.error('Error uploading file:', error);
         }
     }
-    
+
 
 
     return (
@@ -152,8 +139,10 @@ const App = () => {
 
                         <div className='output' >
                             <div className='child'>
-                                <p></p>
-                                {output && <p>{output}</p>}
+                                {output &&
+                                    <div style={{ border: '2px solid black', color: 'white' }}>
+                                        {output}
+                                    </div>}
                             </div>
                         </div>
 
@@ -203,7 +192,7 @@ const App = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div style={{ height: "8vh" }}>
                         </div>
 

@@ -418,9 +418,11 @@ b {
   border-radius: 35px;
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
-  padding: 100px;
+  padding: 25px;
   width: 1040px;
   margin-top: -30px;
+  transition: all 0.5s ease;
+  letter-spacing: 1.5px;
 }
 
 .child p {
@@ -503,6 +505,33 @@ div>h3 {
   font-weight: 500;
   margin: 2px 0 12px 0;
 }
+
+
+
+.buynow {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  background-image: linear-gradient(to right, #e052a0, #f15c41);
+  cursor: pointer;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  font-size: 14px;
+  transition: .5s ease;
+  align-items: center;
+}
+
+.buynow:hover {
+
+  background-image: linear-gradient(to right, #3ec7e0, #526bf4);
+}
+
 
 /* 
 RESPONSIVE
