@@ -14,6 +14,7 @@ const App = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [output, setOutput] = useState();      // State to store output from API
 
+
     const onFileChange = (files) => {
         console.log(files);
         setUploadedFiles(files);
@@ -61,16 +62,49 @@ const App = () => {
 
             // Map each item in vari['data'] to HTML elements
             const outputData = vari['data'].map(item => (
-                <div key={item.medicine_name}>
-                    <div>Medicine Name: {item['medicine_name']}</div>
-                    <div>Medicine Genre: {item['medicine_genre']}</div>
-                    <div>Medicine Text: {item['medicine_text']}</div>
-                    <div>Medicine Image URL: <a href={item['medicine_image_url']}>Link</a></div>
-                    {item['medicine_buy_link'] && (
-                        <div>Medicine Buy Link: <a href={item['medicine_buy_link']} target="_blank" rel="noopener noreferrer"> <button className='buynow'>Buy Now </button></a></div>
-                    )}
+                <div className='data' key={item.medicine_name}>
+                    <div>
+
+                        <div>
+                            <div>
+                                <img src={item['medicine_image_url']} style={{ height: '32vh', width: '32vh', border: '3px groove rgb(36, 67, 56)', padding: '5px', boxShadow: 'rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px'}} alt='' />
+                            </div>
+                        </div>
+
+                        <div >
+                            <div className='res' style={{ marginRight: '70px', padding: '15px 22px 15px 22px', width: '46%' }}>
+
+                                <div style={{ boxShadow: 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset', padding: '12px 15px', background: 'darkgoldenrod', marginBottom: '15px' }}>
+                                    <span>{item['medicine_name']}</span>
+                                </div>
+
+                                <div style={{ boxShadow: 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset', padding: '12px 15px', background: 'darkgoldenrod' }}>
+                                    <span>{item['medicine_genre']}</span>
+                                </div>
+
+                            </div>
+
+
+                            <div style={{ boxShadow: 'rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset', background: 'linear-gradient(rgb(216 150 137), rgb(143 203 170))' , padding: '6px', borderRadius: '10px' }}>
+                                <p>{item['medicine_text']}</p>
+
+                                <div style={{ margin: '10px' }}>
+                                    {item['medicine_buy_link'] && (
+                                        <a href={item['medicine_buy_link']} target="_blank" rel="noopener noreferrer"><button className='buynow'>Buy Now</button></a>
+                                    )}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                 </div>
             ));
+
+
+
+
 
             // Set the concatenated data as the output
             setOutput(outputData);
@@ -140,7 +174,7 @@ const App = () => {
                         <div className='output' >
                             <div className='child'>
                                 {output &&
-                                    <div style={{ border: '2px solid black', color: 'white' }}>
+                                    <div style={{ border: '2px solid #85d34c', color: 'white' }}>
                                         {output}
                                     </div>}
                             </div>
