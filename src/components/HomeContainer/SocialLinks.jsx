@@ -10,11 +10,11 @@ const SocialLinks = () => {
         <div class="social-links">
             <ul style={{ listStyleType: 'none' }}>
 
-            <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <FaLinkedin /> </a>
-            <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <FaGithub /> </a>
-            <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <RiInstagramFill /> </a>
-            </ul>
+                <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <FaLinkedin /> </a>
+                <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <FaGithub /> </a>
+                <a href='https://github.com/sudipto-naskar' target='_blank' rel="noopener noreferrer"> <RiInstagramFill /> </a>
 
+            </ul>
         </div>
     )
 }

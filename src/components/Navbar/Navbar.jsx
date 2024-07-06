@@ -1,13 +1,13 @@
 import React from 'react';
 import './Navbar.css';
 import { Link } from 'react-scroll';
-import Plant from '../../images/plant.png';
+import PlantLogo from '../../images/logo.png';
 
 const Navbar = () => {
   return (
     <nav>
       <ul class='nav-bar'>
-        <li class='logo'><a href='/'><img src={Plant} alt='' /></a></li>
+        <li class='logo'><a href='/'><img src={PlantLogo} alt='' /></a></li>
         <div class="menu">
           <ul style={{ listStyleType: 'none' }}>
 
